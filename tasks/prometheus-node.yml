@@ -1,0 +1,21 @@
+---
+
+- name: Create Prometheus directory structure.
+  file:
+    state: directory
+    path: /opt/prometheus-node-exporter
+
+- name: Get the Prometheus node-exporter binaries.
+  unarchive:
+    remote_src: yes
+    src: https://github.com/prometheus/node_exporter/releases/download/v0.16.0-rc.1/node_exporter-0.16.0-rc.1.linux-amd64.tar.gz
+    extra_opts: ['--strip-components=1', '--show-stored-names']
+    mode: 0665
+    dest: /opt/prometheus-node-exporter
+  notify: Restart Prometheus node.
+
+- name: Add the Prometheus systemd file.
+  template:
+    src: prometheus-node.service
+    dest: /etc/systemd/system/
+  notify: Restart Prometheus node.

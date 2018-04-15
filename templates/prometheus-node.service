@@ -1,0 +1,11 @@
+[Unit]
+Description=Prometheus node exporter
+After=local-fs.target network-online.target network.target
+Wants=local-fs.target network-online.target network.target
+
+[Service]
+ExecStart=/opt/prometheus-node-exporter/node_exporter --collectors.enabled conntrack,diskstats,entropy,edac,filefd,filesystem,hwmon,loadavg,mdadm,meminfo,netdev,netstat,sockstat,stat,textfile,time,uname,vmstat,systemd
+Type=simple
+
+[Install]
+WantedBy=multi-user.target

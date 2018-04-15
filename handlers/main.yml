@@ -1,0 +1,8 @@
+---
+
+- name: Restart Prometheus node.
+  service:
+    name: prometheus-node.service
+    daemon_reload: yes
+    state: restarted
+    enabled: yes
