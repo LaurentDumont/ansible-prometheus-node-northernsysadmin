@@ -8,7 +8,7 @@
 - name: Get the Prometheus node-exporter binaries.
   unarchive:
     remote_src: yes
-    src: https://github.com/prometheus/node_exporter/releases/download/v0.16.0-rc.1/node_exporter-0.16.0-rc.1.linux-amd64.tar.gz
+    src: https://github.com/prometheus/node_exporter/releases/download/v0.16.0-rc.3/node_exporter-0.16.0-rc.3.linux-amd64.tar.gz
     extra_opts: ['--strip-components=1', '--show-stored-names']
     mode: 0665
     dest: /opt/prometheus-node-exporter
